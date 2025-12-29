@@ -16,6 +16,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo */}
+        
         <span className="logo">ARCHI</span>
 
         {/* Desktop links */}
