@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https:///api",
+  baseURL: "https://archi-reflex-backend.onrender.com/api",
 });

@@ -6,7 +6,7 @@ export default function ProjectsPreview() {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
-    axios.get("/projects/").then(res => {
+    axios.get("/projects/projects/").then(res => {
       setProjects(res.data.slice(0, 3));
     });
   }, []);
