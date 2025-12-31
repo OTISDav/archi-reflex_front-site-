@@ -1,36 +1,45 @@
 import { motion } from "framer-motion";
+import "./Hero.css";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen relative flex items-center bg-neutral-950 text-white overflow-hidden">
+    <section className="hero-section">
+
+      {/* Desktop Video */}
+      <motion.video
+        className="hero-video"
+        src="/videos/architecture.mp4"
+        poster="/images/archiphoto.jpg"
+        autoPlay
+        loop
+        muted
+        playsInline
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.08 }}
+        transition={{ duration: 25, ease: "linear" }}
+      />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/90" />
+      <div className="hero-overlay" />
 
       {/* Content */}
       <motion.div
+        className="hero-content"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 max-w-6xl mx-auto px-8"
+        transition={{ duration: 1.1, delay: 0.2 }}
       >
-        <h1 className="text-6xl md:text-8xl font-extralight tracking-[0.2em] mb-8">
-          ARCHITECTURE
-        </h1>
-
-        <p className="max-w-xl text-lg opacity-70 mb-14">
-          Concevoir des espaces durables, élégants et intemporels
-        </p>
-
+        <h1>ARCHITECTURE</h1>
+        <p>Concevoir des espaces durables, élégants et intemporels</p>
         <motion.a
           href="#projects"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-block border border-white px-10 py-5 text-xs tracking-[0.3em] hover:bg-white hover:text-black transition"
         >
           VOIR NOS PROJETS
         </motion.a>
       </motion.div>
+
     </section>
   );
 }
