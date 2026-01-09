@@ -28,7 +28,7 @@ export default function About() {
         </p>
 
         <p className="about-text">
-          Située en centre-ville à Clermont-Ferrand, l’agence compte aujourd’hui
+          Située en centre-ville à paris, l’agence compte aujourd’hui
           six architectes spécialisés dans le logement, la réhabilitation,
           l’urbanisme et la santé.
         </p>

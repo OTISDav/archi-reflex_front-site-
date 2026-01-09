@@ -1,0 +1,176 @@
+/* ========================
+   Conteneur global
+======================== */
+.appointment {
+  min-height: 100vh;
+  background: #0b0b0b; /* noir profond */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
+  font-family: "Inter", sans-serif;
+  color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mot géant discret en fond */
+.appointment::before {
+  content: "RENDEZ-VOUS";
+  position: absolute;
+  font-size: 10rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.03);
+  top: 10%;
+  left: 5%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ========================
+   Card formulaire
+======================== */
+.appointment-container {
+  background: rgba(15, 15, 15, 0.95); /* carte sombre semi-transparente */
+  padding: 5rem 4.5rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Titres */
+.appointment-title {
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+
+.appointment-subtitle {
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-bottom: 3.5rem;
+}
+
+/* ========================
+   Formulaire
+======================== */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Grille des inputs */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Inputs / Select / Textarea */
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+  width: 100%;
+  padding: 1rem 0;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.95rem;
+  background: transparent;
+  outline: none;
+  color: #f5f5f5;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+  border-color: #fff;
+}
+
+/* Select spécifique */
+.appointment-form select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Textarea */
+.appointment-form textarea {
+  resize: none;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+/* ========================
+   Bouton
+======================== */
+.appointment-form button {
+  align-self: flex-start;
+  padding: 0.9rem 2.5rem;
+  border: 1px solid #fff;
+  background: transparent;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.appointment-form button:hover {
+  background: #fff;
+  color: #0b0b0b;
+}
+
+/* ========================
+   Messages succès / erreur
+======================== */
+.form-success {
+  background: rgba(0,255,0,0.1);
+  color: #0f0;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-error {
+  background: rgba(255,0,0,0.1);
+  color: #f00;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ========================
+   Responsive
+======================== */
+@media (max-width: 700px) {
+  .appointment-container {
+    padding: 3.5rem 2.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment-title {
+    font-size: 2.1rem;
+  }
+
+  .appointment::before {
+    font-size: 5rem;
+    top: 5%;
+    left: 2%;
+  }
+}
