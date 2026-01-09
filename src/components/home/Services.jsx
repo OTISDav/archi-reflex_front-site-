@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "./Services.css";
 
 const services = [
   "Architecture résidentielle",
@@ -9,21 +10,25 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="bg-primary text-white py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-light mb-20 tracking-wide">Nos services</h2>
+    <section className="services">
+      <div className="services-container">
+        <h2 className="services-title">Nos services</h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="services-grid">
           {services.map((service, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              className="service-card"
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="border border-white/20 p-10 hover:bg-white hover:text-primary transition"
+              transition={{ duration: 0.8, delay: i * 0.15 }}
             >
-              {service}
+              <span className="service-index">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <h3 className="service-name">{service}</h3>
             </motion.div>
           ))}
         </div>

@@ -19,10 +19,10 @@ export default function About() {
       >
         <span className="about-label">L’agence</span>
 
-        <h2 className="about-title">Soho Auvergne</h2>
+        <h2 className="about-title">ARCHI-REFLEX</h2>
 
         <p className="about-text">
-          Soho Auvergne est une agence d’architecture regroupant les compétences
+          ARCHI-REFLEX est une agence d’architecture regroupant les compétences
           de conception architecturale et urbaine, de suivi, d’ordonnancement,
           de pilotage et de coordination des opérations de maîtrise d’œuvre.
         </p>
