@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import Skeleton from "../../loaders/Skeleton";
 import ProjectModal from "./ProjectModal";
-import "./PortfolioGrid.css"; // Import CSS Soho
+import "./PortfolioGrid.css"; 
 
 export default function PortfolioGrid() {
   const [projects, setProjects] = useState(null);
