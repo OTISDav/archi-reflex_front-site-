@@ -8,8 +8,9 @@ export default function Navbar() {
   const links = [
     { name: "Accueil", to: "/" },
     { name: "Portfolio", to: "/portfolio" },
-    { name: "Rendez-vous", to: "/rendez-vous" },
     { name: "Stage", to: "/stage" },
+    { name: "Rendez-vous", to: "/rendez-vous" },
+    
   ];
 
   return (
