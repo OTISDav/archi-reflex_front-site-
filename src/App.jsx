@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Appointment from "./pages/Appointment";
 import Internship from "./pages/Internship";
-import Contact from "./pages/Contact";
+// import Contact from "./pages/Contact";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -20,7 +20,7 @@ function AnimatedRoutes() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/rendez-vous" element={<Appointment />} />
         <Route path="/stage" element={<Internship />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
     </AnimatePresence>
   );
