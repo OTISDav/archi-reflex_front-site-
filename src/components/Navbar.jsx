@@ -38,7 +38,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile slide menu */}
+     
       <div className={`mobile-slide-menu ${mobileOpen ? "open" : ""}`}>
         {/* Croix pour fermer */}
         <button
