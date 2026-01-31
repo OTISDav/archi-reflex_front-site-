@@ -90,7 +90,7 @@ export default function Internship() {
       <div className="internship-container">
 
         {/* Titres */}
-        <h1 className="internship-title">Stage / Internship</h1>
+        <h1 className="internship-title">Demande de stage</h1>
 
         <p className="internship-subtitle">
           Envoyez votre candidature pour rejoindre notre équipe
