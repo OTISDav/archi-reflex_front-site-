@@ -17,32 +17,55 @@ export default function Internship() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  /* Gestion changement */
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+
     if (files) {
-      setFormData((prev) => ({ ...prev, [name]: files[0] }));
+      const file = files[0];
+
+      // Vérifier PDF
+      if (file && file.type !== "application/pdf") {
+        alert("Veuillez sélectionner un fichier PDF uniquement.");
+        return;
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        [name]: file,
+      }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
   };
 
+  /* Envoi */
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     setError("");
     setSuccess(false);
 
     try {
       const data = new FormData();
+
       Object.entries(formData).forEach(([key, value]) => {
         if (value) data.append(key, value);
       });
 
       await axios.post("/internships/internships/", data, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       setSuccess(true);
+
+      // Reset
       setFormData({
         name: "",
         email: "",
@@ -52,96 +75,161 @@ export default function Internship() {
         cv: null,
         letter: null,
       });
+
     } catch (err) {
       console.error(err);
-      setError("Une erreur est survenue, veuillez réessayer.");
+      setError("Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="internship-form-container">
-      <form className="internship-form" onSubmit={handleSubmit}>
-        <h1>Stage / Internship</h1>
+    <div className="internship">
 
-        {success && <p className="text-green-400">Votre candidature a été envoyée !</p>}
-        {error && <p className="text-red-400">{error}</p>}
+      <div className="internship-container">
 
-        <div className="grid-2">
-          <input
-            type="text"
-            name="name"
-            placeholder="Nom / Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        {/* Titres */}
+        <h1 className="internship-title">Stage / Internship</h1>
 
-        <div className="grid-2">
-          <input
-            type="text"
-            name="phone"
-            placeholder="Téléphone / Phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="school"
-            placeholder="École / School"
-            value={formData.school}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <p className="internship-subtitle">
+          Envoyez votre candidature pour rejoindre notre équipe
+        </p>
 
-        <textarea
-          name="message"
-          placeholder="Message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-        />
+        {/* Messages */}
+        {success && (
+          <div className="success-message">
+            ✅ Candidature envoyée avec succès !
+          </div>
+        )}
 
-        <div className="grid-2">
-          <label>
-            CV (PDF)
+        {error && (
+          <div className="error-message">
+            ❌ {error}
+          </div>
+        )}
+
+        {/* Formulaire */}
+        <form className="internship-form" onSubmit={handleSubmit}>
+
+          {/* Infos */}
+          <div className="form-grid">
+
             <input
-              type="file"
-              name="cv"
-              accept=".pdf"
+              type="text"
+              name="name"
+              placeholder="Nom complet"
+              value={formData.name}
               onChange={handleChange}
               required
             />
-          </label>
 
-          <label>
-            Lettre de motivation (PDF)
             <input
-              type="file"
-              name="letter"
-              accept=".pdf"
+              type="email"
+              name="email"
+              placeholder="Adresse email"
+              value={formData.email}
               onChange={handleChange}
               required
             />
-          </label>
-        </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Envoi..." : "Envoyer"}
-        </button>
-      </form>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Téléphone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              type="text"
+              name="school"
+              placeholder="École / Université"
+              value={formData.school}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
+          {/* Message */}
+          <textarea
+            name="message"
+            placeholder="Votre message..."
+            value={formData.message}
+            onChange={handleChange}
+            rows="4"
+          />
+
+          {/* Upload */}
+          <div className="file-group">
+
+            {/* CV */}
+            <div className="file-upload">
+
+              <label htmlFor="cv">
+                CV (PDF uniquement)
+                <span className="file-hint">
+                  Format : .pdf
+                </span>
+              </label>
+
+              <input
+                type="file"
+                id="cv"
+                name="cv"
+                accept=".pdf,application/pdf"
+                onChange={handleChange}
+                required
+              />
+
+              {formData.cv && (
+                <p className="file-name">
+                  📄 {formData.cv.name}
+                </p>
+              )}
+
+            </div>
+
+            {/* Lettre */}
+            <div className="file-upload">
+
+              <label htmlFor="letter">
+                Lettre de motivation (PDF uniquement)
+                <span className="file-hint">
+                  Format : .pdf
+                </span>
+              </label>
+
+              <input
+                type="file"
+                id="letter"
+                name="letter"
+                accept=".pdf,application/pdf"
+                onChange={handleChange}
+                required
+              />
+
+              {formData.letter && (
+                <p className="file-name">
+                  📄 {formData.letter.name}
+                </p>
+              )}
+
+            </div>
+
+          </div>
+
+          {/* Bouton */}
+          <button type="submit" disabled={loading}>
+            {loading ? "Envoi..." : "Envoyer ma candidature"}
+          </button>
+
+        </form>
+
+      </div>
+
     </div>
   );
 }
