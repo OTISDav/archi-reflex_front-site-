@@ -32,7 +32,7 @@ export default function Hero() {
         <h1>ARCHITECTURE</h1>
         <p>Concevoir des espaces durables, élégants et intemporels</p>
         <motion.a
-          href="#projects"
+          href="/portfolio"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
