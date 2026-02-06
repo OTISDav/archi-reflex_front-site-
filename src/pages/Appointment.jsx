@@ -134,23 +134,26 @@ export default function Appointment() {
               ))}
             </select>
 
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              min={today}
-              required
-            />
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            min={today}
+            required
+            className="custom-input"
+          />
 
-            <input
-              type="time"
-              name="time"
-              value={formData.time}
-              onChange={handleChange}
-              min={minTime}
-              required
-            />
+          <input
+            type="time"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+            min={minTime}
+            required
+            className="custom-input"
+          />
+
           </div>
 
           <textarea

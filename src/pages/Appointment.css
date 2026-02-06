@@ -174,3 +174,16 @@
     left: 2%;
   }
 }
+
+
+.custom-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); 
+  cursor: pointer;
+}
+
+.custom-input {
+  position: relative;
+  padding-right: 30px;
+  background: url('icon-white.svg') no-repeat right 10px center;
+  background-size: 20px 20px;
+}

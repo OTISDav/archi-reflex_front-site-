@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import "./Services.css";
 
 const services = [
-  "Architecture résidentielle",
-  "Architecture commerciale",
-  "Urbanisme & design",
-  "Rénovation & aménagement",
+  "Assistance Technique à Maîtrise d’Ouvrage ",
+  "Architecture",
+  "Ingénierie",
+  "Urbanisme & Innovation Territoriale",
 ];
 
 export default function Services() {
