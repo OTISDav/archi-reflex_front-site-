@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "./Hero.css";
 
 export default function Hero() {
@@ -31,13 +32,17 @@ export default function Hero() {
       >
         <h1>ARCHITECTURE</h1>
         <p>Concevoir des espaces durables, élégants et intemporels</p>
-        <motion.a
-          href="/portfolio"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          VOIR NOS PROJETS
-        </motion.a>
+
+        <Link to="/portfolio">
+          <motion.span
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{ display: "inline-block" }}
+          >
+            VOIR NOS PROJETS
+          </motion.span>
+        </Link>
+
       </motion.div>
 
     </section>
