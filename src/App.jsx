@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import MainLayout from "./layout/MainLayout";
 import { Toaster } from "react-hot-toast";
 
@@ -43,6 +44,7 @@ export default function App() {
       <MainLayout>
         <AnimatedRoutes />
       </MainLayout>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
